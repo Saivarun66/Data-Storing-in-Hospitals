@@ -8,7 +8,7 @@ $('#submit').click(()=>{
     $.post('/FillHospitalsDetails',HospitalDetails,(data,status)=>{
          if(status == "success")
          {
-             console.log(data);
+            window.location.replace('/HospitalPage')
          }
     })
 })
