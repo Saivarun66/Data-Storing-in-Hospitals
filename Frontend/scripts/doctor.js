@@ -1,0 +1,31 @@
+$('#submit').click(()=>{
+    let doctor={
+        id:document.getElementById('doc_id').value,
+        name:document.getElementById('doc_name').value,
+        qual:document.getElementById('qual').value,
+        type:document.getElementById('doc_type').value,
+        city:document.getElementById('city').value,
+        depi:document.getElementById('dep_i').value
+    }
+    $.post('/DoctorDetails',doctor,(data,status)=>{
+        if(status=="success")
+        {
+            window.location.replace('/DoctorPage');
+        }
+    })
+})
+$('#home').click(()=>{
+    console.log(1)
+       window.location.replace('/AdminPage')
+   })
+   if(sessionStorage.getItem("key")==null)
+{
+    window.location.replace('/')
+}
+$("#logout").click(()=>{
+    if(sessionStorage.getItem("key"))
+    {
+        sessionStorage.removeItem("key")
+        window.location.replace('/')
+    }
+})

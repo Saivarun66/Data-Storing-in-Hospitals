@@ -1,0 +1,29 @@
+$('#submit').click(()=>{
+    var HospitalDetails={
+        Hos_id:document.getElementById('exampleInputEmail1').value,
+        Hos_name:document.getElementById('Hosname').value,
+        Hos_loc:document.getElementById('Hosloc').value 
+    }
+    console.log(HospitalDetails)
+    $.post('/FillHospitalsDetails',HospitalDetails,(data,status)=>{
+         if(status == "success")
+         {
+             console.log(data);
+         }
+    })
+})
+$('#home').click(()=>{
+ console.log(1)
+    window.location.replace('/AdminPage')
+})
+if(sessionStorage.getItem("key")==null)
+{
+    window.location.replace('/')
+}
+$("#logout").click(()=>{
+    if(sessionStorage.getItem("key"))
+    {
+        sessionStorage.removeItem("key")
+        window.location.replace('/')
+    }
+})
